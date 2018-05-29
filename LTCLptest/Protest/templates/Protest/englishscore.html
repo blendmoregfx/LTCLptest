@@ -1,0 +1,55 @@
+{% extends 'Protest/base.html' %}
+<title>{% block title %} {{ title }} {% endblock %}</title>
+{% block content %}
+<div class="questionSection">
+ <h3>{{ lang }} Score </h3>
+
+ {% for score in engScore %}
+
+ <ul>
+     <div class="questionWrapper">
+         {{ score.questionNumber }}) {{ score.question }}</br>
+     </div>
+     <div class="answerWrapper">
+         <div class="ansContainer">
+           {% if score.AnsA == score.selectedAns and score.AnsA == score.rightAnswer  %}
+                [ A ] {{ score.AnsA }} <span style="color:green; font-weight:bold; font-size: 1.2em;">&#x2714;</span>  &nbsp;  </br>
+           {% elif score.AnsA == score.selectedAns and score.AnsA != score.rightAnswer %}
+                [ A ] {{ score.AnsA }} <span style="color:red; font-weight:bold; font-size: 1.0em;">&#x2718;</span>  &nbsp;  </br>
+           {% else %}
+                  [ A ] {{ score.AnsA }}</br>
+           {% endif %}
+
+           {% if score.AnsB == score.selectedAns and score.AnsB == score.rightAnswer  %}
+              [ B ] {{ score.AnsB }} <span style="color:green; font-weight:bold; font-size: 1.2em;">&#x2714;</span>  &nbsp;  </br>
+           {% elif score.AnsB == score.selectedAns and score.AnsB != score.rightAnswer %}
+              [ B ] {{ score.AnsB }} <span style="color:red; font-weight:bold; font-size: 1.0em;">&#x2718;</span>  &nbsp;  </br>
+           {% else %}
+                [ B ] {{ score.AnsB }}</br>
+           {% endif %}
+
+           {% if score.AnsC == score.selectedAns and score.AnsC == score.rightAnswer  %}
+                [ C ] {{ score.AnsC }} <span style="color:green; font-weight:bold; font-size: 1.2em;">&#x2714;</span>  &nbsp;  </br>
+           {% elif score.AnsC == score.selectedAns and score.AnsC != score.rightAnswer %}
+                [ C ] {{ score.AnsC }} <span style="color:red; font-weight:bold; font-size: 1.0em;">&#x2718;</span>  &nbsp;  </br>
+           {% else %}
+                [ C ] {{ score.AnsC }}</br>
+           {% endif %}
+
+           {% if score.AnsD == score.selectedAns and score.AnsD == score.rightAnswer  %}
+                [ D ] {{ score.AnsD }} <span style="color:green; font-weight:bold; font-size: 1.2em;">&#x2714;</span>  &nbsp;  </br>
+           {% elif score.AnsD == score.selectedAns and score.AnsD != score.rightAnswer %}
+              [ D ] {{ score.AnsD }} <span style="color:red; font-weight:bold; font-size: 1.0em;">&#x2718;</span>  &nbsp;  </br>
+           {% else %}
+                [ D ] {{ score.AnsD }}</br>
+           {% endif %}
+         </div>
+     </div>
+
+ </ul>
+
+ {% endfor %}
+
+
+ </div>
+{% endblock %}

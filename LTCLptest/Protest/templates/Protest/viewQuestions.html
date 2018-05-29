@@ -1,0 +1,28 @@
+{% extends 'Protest/base.html' %}
+<title>{% block title %} {{ title }} {% endblock %}</title>
+{% block content %}
+<div class="questionSection">
+ <h3>Available Questions </h3>
+
+ {% for questionans in getQa %}
+
+ <ul>
+     <div class="questionWrapper">
+         {{ questionans.questionNumber }}) {{ questionans.question }}</br>
+     </div>
+     <div class="answerWrapper">
+         <div class="ansContainer">
+             <input class="form-check-input" type="radio" name={{ questionans.questionNumber }}) value={{ questionans.AnsA }}>{{ questionans.AnsA }} </br>
+             <input class="form-check-input" type="radio" name={{ questionans.questionNumber }}) value={{ questionans.AnsB }}>{{ questionans.AnsB }} </br>
+             <input class="form-check-input" type="radio" name={{ questionans.questionNumber }}) value={{ questionans.AnsC }}>{{ questionans.AnsC }} </br>
+             <input class="form-check-input" type="radio" name={{ questionans.questionNumber }}) value={{ questionans.AnsD }}>{{ questionans.AnsD }} </br>
+         </div>
+     </div>
+
+ </ul>
+
+ {% endfor %}
+
+ <a href="{% url 'addengqa' %}" class="btn btn-outline-primary btn-sm">Add Question and Answers</a>
+ </div>
+{% endblock %}

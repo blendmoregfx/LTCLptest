@@ -1,0 +1,13 @@
+{% extends 'Protest/base.html' %}
+
+<title>{% block title %}Landing Page{% endblock %}</title>
+
+{% block content %}
+{% if user.is_authenticated %}
+ LTCS Pro test
+{% else %}
+<p>
+  <h4>You have not logged-in please click top right to get Authenticatied</h4>
+</p>
+{% endif %}
+{% endblock %}

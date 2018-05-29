@@ -1,0 +1,98 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome LTCS Online Pro Test{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+<style media="screen">
+
+.mainContent{
+  width: 90%;
+  margin-left: 5%;
+}
+
+  .Roundbutton{
+    border-radius: 50px;
+    border: none;
+    color: rgb(221, 11, 181);
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+  }
+
+  .AddEnglishQuestionAnsAnswer{
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .MyButton{
+   border: none;
+   background-color: floralwhite;
+   height: 25px;
+   width: 25px;
+   color: darkviolet;
+   font-weight: 700;
+   font-size: 0.8em;
+   cursor: pointer;
+   margin-bottom: 1px;
+  }
+
+</style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+
+          <h3 class="navbar-brand" >Profiency Tests</h3>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ user.username }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                  <a class="dropdown-item" href="#">My account</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                </div>
+              </li>
+            </ul>
+          {% else %}
+            <form class="form-inline ml-auto">
+              <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-sm">Log in</a>
+              <a href="{% url 'signup' %}" class="btn btn-primary btn-sm ml-2">Sign up</a>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+<section class="mainSection">
+  {% block breadcrumb %}
+  {% endblock %}
+<div class="mainContent">
+  {% block content %}
+  {% endblock %}
+</div>
+</section>
+
+
+    <script src="{% static 'scripts/jquery.js' %}" charset="utf-8"></script>
+    <script src="{% static 'scripts/popper.min.js' %}"></script>
+    <script src="{% static 'scripts/bootstrap.min.js' %}" charset="utf-8"></script>
+    {% block javascript %}
+    <script src="{% static 'scripts/main.js' %}" charset="utf-8"></script>
+
+    {% endblock %}
+  </body>
+</html>

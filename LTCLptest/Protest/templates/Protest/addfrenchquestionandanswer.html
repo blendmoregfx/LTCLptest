@@ -1,0 +1,120 @@
+{% extends 'Protest/base.html' %}
+
+<title>{% block title %}Add French Question and answers{% endblock %}</title>
+
+
+     {% block content %}
+     <div class="questionSection">
+
+       <form action="{% url 'addfrench' %}" method="POST">
+          <div class="form-group">
+          {% csrf_token %}
+          {% block context %}
+          <p>
+            <h2>Add French Question and Answers</h2>
+          </p>
+          <div class="container">
+
+  <div class="row">
+    <div class="col">
+
+      <p>
+        <label for="section">Add Section</label><select class="form-control" {{ form.section }}>
+          <option>Grammar1</option>
+          <option>Grammar2</option>
+          <option>READING COMPREHENSION</option>
+          <option>SYNONYMS</option>
+          <option>Antonyms</option>
+        </select>
+      </p>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+        <label for="language">Choose Language</label><select class="form-control" {{ form.language }}>
+          <option>French</option>
+          <option>English</option>
+          <option>Espanior</option>
+          <option>Chichewa</option>
+          <option>Dutch</option>
+          <option>Portugese</option>
+          <option>Arabic</option>
+          <option>German</option>
+          <option>Swahili</option>
+          <option>Tumbuka</option>
+
+        </select>
+      </p>
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+
+
+
+              <hr>
+
+              <p>
+              <label for=questionNumber>Add Question number</label><input class="form-control" type="text" {{ form.questionNumber }}
+              </p>
+
+              <hr>
+
+                 <h2>Add Question</h2>
+
+              <p>
+              <label for="question">Question</label><input class="form-control" type="text" {{ form.question }}
+              </p>
+               <br>
+              <hr>
+
+              <h2>Add Answers</h2>
+              <p>
+              <label for="AnsA">AnsA</label><input class="form-control" type="text" {{ form.AnsA }}
+              </p>
+
+              <p>
+              <label for="AnsB">AnsB</label><input class="form-control" type="text" {{ form.AnsB}}
+              </p>
+
+              <p>
+              <label for="AnsC">AnsC</label><input class="form-control" type="text" {{ form.AnsC}}
+              </p>
+
+              <p>
+              <label for="AnsD">AnsD</label><input class="form-control" type="text" {{ form.AnsD }}
+              </p>
+              <p>
+
+              <a href="{% url 'viewqafrench' %}" class="btn btn-outline-primary btn-sm">View French Questions And Answers</a>
+              <button type="submit" class="btn btn-outline-success btn-sm">Save Question</button>
+              </p>
+
+ </div>
+  {% endblock %}
+
+</div>
+</form>
+{% endblock %}

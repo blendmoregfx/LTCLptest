@@ -1,0 +1,56 @@
+{% extends 'Protest/base_USer.html' %}
+<title>{% block title %} {{ title }} {% endblock %}</title>
+{% block content %}
+ {% for Q_Ans in getQa %}
+ {% block javascript %}
+
+ <script>
+
+ $('input:radio[class="form-check-input"]').on("click", function(){
+
+     var getradioValue_ID = $(this).data('isprm');
+     var getAnsValue = $(this).val();
+     alert(getradioValue_ID);
+
+     $.ajax({
+       type: 'POST',
+       url: 'gradenglish',
+       dataType: 'json',
+       data: {
+         engQID: getradioValue_ID,
+         getansValue: getAnsValue,
+         csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+       },
+       success: function (data) {
+         }
+     })
+ });
+
+ </script>
+
+ {% endblock %}
+
+
+
+ <ul>
+     <div class="questionWrapper">
+         {{ Q_Ans.questionNumber }}) {{ Q_Ans.question }}</br>
+     </div>
+     <div class="answerWrapper">
+         <div class="ansContainer">
+     {% csrf_token %}
+     <input class="form-check-input" type="radio" name="{{ Q_Ans.questionNumber }}" value="{{ Q_Ans.AnsA }}" data-isprm="{{ Q_Ans.questionNumber }}">{{ Q_Ans.AnsA }} </br>
+     <input class="form-check-input" type="radio" name="{{ Q_Ans.questionNumber }}" value="{{ Q_Ans.AnsB }}" data-isprm="{{ Q_Ans.questionNumber }}">{{ Q_Ans.AnsB }} </br>
+     <input class="form-check-input" type="radio" name="{{ Q_Ans.questionNumber }}" value="{{ Q_Ans.AnsC }}" data-isprm="{{ Q_Ans.questionNumber }}">{{ Q_Ans.AnsC }} </br>
+     <input class="form-check-input" type="radio" name="{{ Q_Ans.questionNumber }}" value="{{ Q_Ans.AnsD }}" data-isprm="{{ Q_Ans.questionNumber }}">{{ Q_Ans.AnsD }} </br>
+
+        </div>
+     </div>
+
+ </ul>
+
+ {% endfor %}
+
+
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'Protest/base.html' %}
+
+
+<title>{% block title %}Landing Page{% endblock %}</title>
+
+{% block content %}
+{% if user.is_authenticated and user.email == 'chisenga.joy@ltcsmw.com' %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+      <p>
+        <h3>LTCS main Dashboard</h3>
+      </p>
+    </div>
+
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Questions and Answers</h5>
+          <p class="card-text">Click button below to add Questions and answers.</p>
+          <a href="{% url 'addqlandingpage' %}" class="btn btn-primary">Add Quesions and Answers</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Admin Section</h5>
+          <p class="card-text">Use the Admin section to add users and add access control</p>
+          <a href="admin" class="btn btn-warning">Go to Admin</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">View test results</h5>
+          <p class="card-text">Click button below to view assessment test results.</p>
+          <a href="#" class="btn btn-primary">Click to View test results</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">For Students only</h5>
+          <p class="card-text">Click button below to add Questions and answers.</p>
+          <a href="{% url 'addqlandingpage' %}" class="btn btn-primary">Add Quesions and Answers</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">///Admin Section</h5>
+          <p class="card-text">Use the Admin section to add users and add access control</p>
+          <a href="admin" class="btn btn-warning">Go to Admin</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">///View test results</h5>
+          <p class="card-text">Click button below to view assessment test results.</p>
+          <a href="#" class="btn btn-primary">Click to View test results</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'Protest/base.html' %}
+
+<title>{% block title %}{{ getengQuestion.question }}{% endblock %}</title>
+{% block content %}
+<h2>Question details</h2>
+
+      <p>
+       <h4> language: {{ getengQuestion.language }}</h4>
+     </p>
+
+      <p>
+        <h2>Question: {{ getengQuestion.question }}</h2>
+      </p>
+        <hr>
+        <h3>Please click on an Answer to make it a correct one.</h3>
+      <div class="answeContainer">
+        <div class="answers">
+
+      <p>
+      Answer A:{{ getengQuestion.AnsA }}
+      </p>
+      <p>
+        Answer B: {{ getengQuestion.AnsB }}
+      </p>
+      <p>
+      Answer C: {{ getengQuestion.AnsC }}
+      </p>
+      <p>
+      Answer D: {{ getengQuestion.AnsD }}
+      </p>
+      <p>
+        <h3>Right Answer: {{ getengQuestion.rightAnswer }}</h3>
+      </p>
+    </div>
+      </div>
+
+     <p>
+      <a href="{% url 'viewqaenglish' %}" class="btn btn-outline-info btn-sm">Back to English Questions</a>
+     </p>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'Protest/base.html' %}
+
+{% block javascript %}
+  <script>
+  $("#qnumber").focusout(function () {
+      var Qnumber =  $(this).val();
+
+      $.ajax({
+        url: "{% url 'valqnumber' %}",
+        data: {
+          'Qnumber': Qnumber
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.num_exist) {
+          alert("Question Number already exists.");
+            $(this).reset();
+          }
+        }
+      });
+
+  });
+
+  $('input:radio[class="rightAns"]').on("click", function(e){
+
+      var getradioValue = $(this).val();
+      var harshsymbol = "#"
+      var inID = harshsymbol+getradioValue
+      var getinputValue = $(inID).val();
+
+      if (getinputValue === ""){
+        alert(" If this is a right answer Field then it should not be blanc ");
+      }
+      var getRightAnsID = $("#rightAnswer")
+      getRightAnsID.val(getinputValue);
+
+  });
+  </script>
+{% endblock %}
+
+<title>{% block title %}Add Question and answers{% endblock %}</title>
+
+<div class="AddEnglishQuestionAnsAnswer">
+
+
+     {% block content %}
+     <div class="questionSection">
+       <form action="{% url 'addengqa' %}" method="POST">
+          <div class="form-group">
+          {% csrf_token %}
+          {% block context %}
+          <p>
+            <h2>Add English Question and Answers</h2>
+          </p>
+          <div class="container">
+
+  <div class="row">
+    <div class="col">
+
+      <p>
+        <label for="section">Add Section</label><select class="form-control" {{ form.section }}>
+          <option>Grammar1</option>
+          <option>Grammar2</option>
+          <option>READING COMPREHENSION</option>
+          <option>SYNONYMS</option>
+          <option>Antonyms</option>
+        </select>
+      </p>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+        <label for="language">Choose Language</label><select class="form-control" {{ form.language }}>
+          <option>English</option>
+          <option>French</option>
+          <option>Espanior</option>
+          <option>Chichewa</option>
+          <option>Dutch</option>
+          <option>Portugese</option>
+          <option>Arabic</option>
+          <option>German</option>
+          <option>Swahili</option>
+          <option>Tumbuka</option>
+
+        </select>
+      </p>
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+
+
+
+              <hr>
+
+              <p>
+              <label for=questionNumber>Add Question number</label><input id="qnumber" class="form-control" type="text" {{ form.questionNumber }}
+              </p>
+
+              <hr>
+
+                 <h2>Add Question</h2>
+
+              <p>
+              <label for="question">Question</label><input class="form-control" type="text" {{ form.question }}
+              </p>
+               <br>
+              <hr>
+
+              <h3>Add Answers,then click a radio button to choose the right one</h3>
+              <p>
+              <label for="AnsA">Answer A</label><input class="form-control" type="text" id="AnsA" {{ form.AnsA }}
+              <input type="radio" class="rightAns" name="rightAns" value="AnsA">
+              </p>
+
+              <p>
+              <label for="AnsB">Answer B</label><input class="form-control" type="text" id="AnsB" {{ form.AnsB}}
+              <input type="radio" class="rightAns" name="rightAns" value="AnsB">
+              </p>
+
+              <p>
+              <label for="AnsC">Answer C</label><input class="form-control" type="text" id="AnsC" {{ form.AnsC}}
+              <input type="radio" class="rightAns" name="rightAns" value="AnsC">
+              </p>
+
+              <p>
+              <label for="AnsD">Answer D</label><input class="form-control" type="text" id="AnsD" {{ form.AnsD }}
+              <input type="radio" class="rightAns" name="rightAns" value="AnsD" >
+              </p>
+
+              <p>
+              <label for="AnsD">Right answer</label><input class="form-control" type="text" id="rightAnswer" {{ form.rightAnswer }}
+              </p>
+              <p>
+
+             <p>
+               <a href="{% url 'viewqaenglish' %}" class="btn btn-outline-primary btn-sm">View English Questions And Answers</a>
+               <button type="submit" class="btn btn-outline-success btn-sm">Save Question</button>
+             </p>
+              </p>
+</div>
+ </div>
+  {% endblock %}
+
+</div>
+</form>
+{% endblock %}

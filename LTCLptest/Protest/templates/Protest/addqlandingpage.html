@@ -1,0 +1,82 @@
+{% extends 'Protest/base.html' %}
+
+<title>{% block title %} Language Dashboard {% endblock %}</title>
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+      <p>
+        <h3>Language Dashboard</h3>
+      </p>
+    </div>
+
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+
+<p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">English</h5>
+          <p class="card-text">Click button below to Add Engish Questions.</p>
+          <a href="{% url 'addengqa' %}" class="btn btn-primary">Go to English section</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">French</h5>
+          <p class="card-text">Click button below to Add French Questions.</p>
+          <a href="{% url 'addfrench' %}" class="btn btn-primary">Go to French section</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Swahili</h5>
+          <p class="card-text">Click button below to Add Swahili Questions.</p>
+          <a href="{% url 'addswahili' %}" class="btn btn-primary">Go to Swahili section</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Chinese</h5>
+          <p class="card-text">Click button below to Add Chinese Questions.</p>
+          <a href="{% url 'addmandarin' %}" class="btn btn-primary">Go to Mandarin section</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+
+    </div>
+
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+
+{% endblock %}
